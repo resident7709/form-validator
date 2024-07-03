@@ -1,41 +1,41 @@
-const form = document.getElementById("form");
-const password1El = document.getElementById("password1");
-const password2El = document.getElementById("password2");
-const messageContainer = document.querySelector(".message-container");
-const message = document.getElementById("message");
+const form = document.getElementById('form');
+const password1El = document.getElementById('password1');
+const password2El = document.getElementById('password2');
+const messageContainer = document.querySelector('.message-container');
+const message = document.getElementById('message');
 
 let isValid = false;
 let passwordsMatch = false;
 
 function validateForm() {
-  // *Using Constraint API
+  // Using Constraint API
   isValid = form.checkValidity();
-  // *Message for an error
+  // Message for an error
   if (!isValid) {
-    message.textContent = "Please fill out all fields..";
-    message.style.color = "red";
-    messageContainer.style.borderColor = "red";
+    message.textContent = 'Please fill out all fields..';
+    message.style.color = 'red';
+    messageContainer.style.borderColor = 'red';
     return;
   }
-  // *Check passwords
+  // Check passwords
   if (password1El.value === password2El.value) {
     passwordsMatch = true;
-    password1El.style.borderColor = "#00d500";
-    password2El.style.borderColor = "#00d500";
+    password1El.style.borderColor = '#00d500';
+    password2El.style.borderColor = '#00d500';
   } else {
     passwordsMatch = false;
-    message.textContent = "Make sure passwords match..";
-    message.style.color = "red";
-    messageContainer.style.borderColor = "red";
-    password1El.style.borderColor = "red";
-    password2El.style.borderColor = "red";
+    message.textContent = 'Make sure passwords match..';
+    message.style.color = 'red';
+    messageContainer.style.borderColor = 'red';
+    password1El.style.borderColor = 'red';
+    password2El.style.borderColor = 'red';
     return;
   }
-  // * Form success
+  // Form success
   if (isValid && passwordsMatch) {
-    message.textContent = "Successfully Registered!";
-    message.style.color = "#00d500";
-    messageContainer.style.borderColor = "#00d500";
+    message.textContent = 'Successfully Registered!';
+    message.style.color = '#00d500';
+    messageContainer.style.borderColor = '#00d500';
   }
 }
 
@@ -47,19 +47,19 @@ function storeFormData() {
     website: form.website.value,
     password: form.password.value,
   };
-  // *Do something with user data
+  // Do something with user data
   console.log(user);
 }
 
 function processFormData(e) {
   e.preventDefault();
-  // *Validate Form
+  // Validate Form
   validateForm();
-  // *Submit Data if Valid
+  // Submit Data if Valid
   if (isValid && passwordsMatch) {
     storeFormData();
   }
 }
 
-// *Event Listener
-form.addEventListener("submit", processFormData);
+// Event Listener
+form.addEventListener('submit', processFormData);
